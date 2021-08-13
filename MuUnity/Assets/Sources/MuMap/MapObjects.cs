@@ -186,7 +186,7 @@ namespace MuMap {
 				muObject = (GameObject)Instantiate(obj,Vector3.zero, Quaternion.identity);
 				muObject.name = "Obj"+mapObject.id.ToString();
 				
-				Transform SMD = muObject.transform.FindChild("SMDImport");
+				Transform SMD = muObject.transform.Find("SMDImport");
 				if (SMD!=null) {
 					SkinnedMeshRenderer mesh = SMD.gameObject.GetComponent<SkinnedMeshRenderer>();
 					if (mesh!=null) {

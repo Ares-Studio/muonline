@@ -68,14 +68,14 @@ namespace MuEffects {
 		}
 		
 		IEnumerator FadeOut(Transform obj) {
-			Color c = obj.renderer.material.color;
+			Color c = obj.GetComponent<Renderer>().material.color;
 			for (float a = 1f; a>=0f; a-=0.1f) {
 				c.a = a;
-				obj.renderer.material.color = c;
+				obj.GetComponent<Renderer>().material.color = c;
 				yield return 1;
 			}
 			c.a = 0f;
-			obj.renderer.material.color = c;
+			obj.GetComponent<Renderer>().material.color = c;
 			yield break;
 		}
 		

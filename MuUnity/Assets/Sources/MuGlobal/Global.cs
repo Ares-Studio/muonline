@@ -1,5 +1,6 @@
 ﻿
 using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 
 
@@ -25,11 +26,12 @@ namespace MuGlobal {
 		}
 		
 		public void WWWSend ( string url ) {
-			WWW www = new WWW ( url );
+			UnityWebRequest www = new UnityWebRequest(url);
+			// WWW www = new WWW ( url );
 			StartCoroutine ( LoadWWWCoroutine ( www ) );
 		}
 		
-		IEnumerator LoadWWWCoroutine ( WWW www ) {
+		IEnumerator LoadWWWCoroutine ( UnityWebRequest www ) {
 			while (!www.isDone) {
 				yield return www;	
 			}

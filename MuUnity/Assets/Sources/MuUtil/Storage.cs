@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.IO;
 using System.Collections;
 using System.Xml;
@@ -13,10 +14,11 @@ namespace Util {
 		
 			filePath = Application.streamingAssetsPath+'/'+file;
 			
-			if (filePath.Contains("://") || Application.isWebPlayer) {
-				WWW www = new WWW(filePath);
-				while (!www.isDone) { }
-	            result = www.bytes;
+			if (filePath.Contains("://") || Application.platform == RuntimePlatform.WebGLPlayer) {
+				UnityWebRequest www = new UnityWebRequest(filePath);
+				// WWW www = new WWW(filePath);
+				while (!www.isDone) {}
+	            result = www.downloadHandler.data;
 	    	} else {
 				#if !UNITY_WEBPLAYER
 				try {

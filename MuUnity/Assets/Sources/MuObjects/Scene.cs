@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 using MuUI;
 using MuGlobal;
+using UnityEngine.SceneManagement;
 
 public class Scene : MonoBehaviour {
 	
@@ -39,7 +40,8 @@ public class Scene : MonoBehaviour {
 	 		loaderUI = "LoaderUI";
 		}
 		
-		AsyncOperation async = Application.LoadLevelAsync(name);
+		// AsyncOperation async = Application.LoadLevelAsync(name);
+		AsyncOperation async = SceneManager.LoadSceneAsync(name);
 		
 		while (!async.isDone) {
 	 	 	
@@ -51,11 +53,13 @@ public class Scene : MonoBehaviour {
 	}
 	
 	protected void OnEnable () {
-		Application.RegisterLogCallback(Util.Debug.LogCallback);
+		// Application.RegisterLogCallback(Util.Debug.LogCallback);
+		Application.logMessageReceived += Util.Debug.LogCallback;
 	}
 	
 	protected void OnDisable () {
-		Application.RegisterLogCallback(null);
+		// Application.RegisterLogCallback(null);
+		Application.logMessageReceived -= Util.Debug.LogCallback;
 	}
 	
 }

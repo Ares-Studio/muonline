@@ -8,9 +8,9 @@ public class SMDObject : MonoBehaviour {
 	protected Renderer SMDrendered;
 	
 	protected void InitSMD() {
-		SMD = gameObject.transform.FindChild("SMDImport");
+		SMD = gameObject.transform.Find("SMDImport");
 		if (SMD!=null)
-			SMDrendered = SMD.renderer;
+			SMDrendered = SMD.GetComponent<Renderer>();
 		else {
 			Debug.LogWarning("Not found SMD");	
 		}

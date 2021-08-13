@@ -26,7 +26,8 @@ namespace MuUI {
 		
 		public UIComponent add(string type) {
 			GameObject go = Util.GO.Create (type, gameObject.transform, Util.GO.Layer.UI, Util.GO.Tag.UI );
-			return go.AddComponent(type) as UIComponent;
+			// return UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(go, "Assets\Sources\MuUI\UI.cs (29,11)", type) as UIComponent;
+			return go.AddComponent<UIComponent>();
 		}
 		
 		public void remove(string type) {
